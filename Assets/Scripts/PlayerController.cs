@@ -74,11 +74,11 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
 
-    }
+   }
 
     private void FixedUpdate()
     {
-        // Move horizontal
+       // Move horizontal
         dirX = Input.GetAxisRaw("Horizontal");
         Walk();
 
@@ -143,10 +143,12 @@ public class PlayerController : MonoBehaviour
     }
     void Walk()
     {
-        rb.velocity = new Vector2(dirX * moveSpd, rb.velocity.y);
+        //rb.velocity = new Vector2(dirX * moveSpd, rb.velocity.y);
+        rb.AddForce(new Vector2(dirX * moveSpd, 0), ForceMode2D.Impulse);
     }
     void Jump()
     {
-        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        //rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
     }
 }
